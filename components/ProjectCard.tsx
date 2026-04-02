@@ -5,32 +5,55 @@ type Props = {
 };
 
 export function ProjectCard({ project }: Props) {
-  const title =
-    project.href != null ? (
-      <h3 className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
-        <a
-          href={project.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-sm text-teal-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 dark:text-teal-400"
-        >
-          {project.title}
-          <span className="sr-only"> (opens in a new tab)</span>
-        </a>
-      </h3>
-    ) : (
-      <h3 className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
-        {project.title}
-      </h3>
-    );
+  const liveLabel = project.liveLabel ?? "Live site";
+  const hasLinks = Boolean(project.liveUrl || project.repoUrl);
 
   return (
     <article className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm transition hover:border-teal-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-950">
-      {title}
+      {project.imageSrc ? (
+        <div className="mb-4 overflow-hidden rounded-xl border border-zinc-200/80 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
+          {/* eslint-disable-next-line @next/next/no-img-element -- external / data URLs; static export */}
+          <img
+            src={project.imageSrc}
+            alt={project.imageAlt ?? ""}
+            className="max-h-48 w-full object-cover object-center"
+            loading="lazy"
+          />
+        </div>
+      ) : null}
+      <h3 className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+        {project.title}
+      </h3>
       <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
         {project.summary}
       </p>
-      <ul className="mt-3 flex flex-wrap gap-2" aria-label="Tech stack">
+      {hasLinks ? (
+        <div className="mt-4 flex flex-wrap gap-3">
+          {project.liveUrl ? (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-lg border border-teal-600/30 bg-teal-50 px-3 py-1.5 text-sm font-medium text-teal-800 transition hover:bg-teal-100 dark:border-teal-500/40 dark:bg-teal-950/50 dark:text-teal-200 dark:hover:bg-teal-900/50"
+            >
+              {liveLabel}
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          ) : null}
+          {project.repoUrl ? (
+            <a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-lg border border-zinc-300 bg-white px-3 py-1.5 text-sm font-medium text-zinc-800 transition hover:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
+            >
+              GitHub
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          ) : null}
+        </div>
+      ) : null}
+      <ul className="mt-4 flex flex-wrap gap-2" aria-label="Tech stack">
         {project.stack.map((tech) => (
           <li
             key={tech}

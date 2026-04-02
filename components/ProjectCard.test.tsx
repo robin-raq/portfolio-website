@@ -22,18 +22,51 @@ describe("ProjectCard", () => {
     expect(screen.getByText("TypeScript")).toBeInTheDocument();
   });
 
-  it("renders an external link when href is set", () => {
+  it("renders Live site and GitHub links when URLs are set", () => {
     render(
-      <ProjectCard project={{ ...base, href: "https://example.com/app" }} />,
+      <ProjectCard
+        project={{
+          ...base,
+          liveUrl: "https://example.com/app",
+          repoUrl: "https://github.com/robin-raq/sample",
+        }}
+      />,
     );
-    const link = screen.getByRole("link", { name: /Sample Project/i });
-    expect(link).toHaveAttribute("href", "https://example.com/app");
-    expect(link).toHaveAttribute("target", "_blank");
-    expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    const live = screen.getByRole("link", { name: /Live site/i });
+    expect(live).toHaveAttribute("href", "https://example.com/app");
+    expect(live).toHaveAttribute("target", "_blank");
+    const gh = screen.getByRole("link", { name: /GitHub/i });
+    expect(gh).toHaveAttribute("href", "https://github.com/robin-raq/sample");
   });
 
-  it("does not render a project link when href is absent", () => {
-    render(<ProjectCard project={base} />);
-    expect(screen.queryByRole("link", { name: /Sample Project/i })).toBeNull();
+  it("uses custom live label when provided", () => {
+    render(
+      <ProjectCard
+        project={{
+          ...base,
+          liveUrl: "https://loom.com/video",
+          liveLabel: "Watch demo",
+        }}
+      />,
+    );
+    expect(
+      screen.getByRole("link", { name: /Watch demo/i }),
+    ).toBeInTheDocument();
+  });
+
+  it("renders optional image when imageSrc is set", () => {
+    render(
+      <ProjectCard
+        project={{
+          ...base,
+          imageSrc: "https://example.com/shot.png",
+          imageAlt: "Screenshot",
+        }}
+      />,
+    );
+    expect(screen.getByRole("img", { name: "Screenshot" })).toHaveAttribute(
+      "src",
+      "https://example.com/shot.png",
+    );
   });
 });

@@ -1,7 +1,10 @@
+import Image from "next/image";
 import { ContactSection } from "@/components/ContactSection";
 import { ProjectCard } from "@/components/ProjectCard";
 import { getOrderedProjects } from "@/lib/projects";
 import { skillGroups } from "@/lib/skills";
+
+const PORTRAIT_SRC = "https://iamraq.github.io/public/img/me2.jpg";
 
 export default function Home() {
   const projects = getOrderedProjects();
@@ -64,32 +67,48 @@ export default function Home() {
             >
               About
             </h2>
-            <div className="mt-4 max-w-2xl space-y-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-              <p>
-                I&apos;m a senior fullstack engineer focused on clean
-                architecture, thoughtful UX, and shipping production-ready
-                products. My background in industrial engineering helps me
-                connect engineering, design, and delivery.
-              </p>
-              <p>
-                Outside of work I DJ and collaborate on community-focused tech
-                and arts projects. I&apos;m part of the{" "}
-                <a
-                  href="https://outintech.com/digital-corps/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-teal-700 underline-offset-4 hover:underline dark:text-teal-400"
-                >
-                  Out in Tech
-                </a>{" "}
-                digital corps, building web products for LGBTQ+ activist and
-                nonprofit organizations.
-              </p>
-              <p>
-                I&apos;m based in Brooklyn and exploring full-stack or front-end
-                roles on teams that value creativity, purpose-driven work, and
-                continuous learning.
-              </p>
+            <div className="mt-8 flex flex-col gap-8 md:flex-row md:items-start">
+              <figure className="mx-auto shrink-0 md:mx-0">
+                <Image
+                  src={PORTRAIT_SRC}
+                  alt="Raq Robinson"
+                  width={280}
+                  height={360}
+                  className="rounded-2xl border border-zinc-200/80 object-cover shadow-sm dark:border-zinc-700"
+                  sizes="(max-width: 768px) 240px, 280px"
+                  priority
+                />
+                <figcaption className="mt-2 text-center text-xs text-zinc-500 dark:text-zinc-500">
+                  Photo from my previous portfolio site
+                </figcaption>
+              </figure>
+              <div className="max-w-2xl flex-1 space-y-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                <p>
+                  I&apos;m a senior fullstack engineer focused on clean
+                  architecture, thoughtful UX, and shipping production-ready
+                  products. My background in industrial engineering helps me
+                  connect engineering, design, and delivery.
+                </p>
+                <p>
+                  Outside of work I DJ and collaborate on community-focused tech
+                  and arts projects. I&apos;m part of the{" "}
+                  <a
+                    href="https://outintech.com/digital-corps/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-teal-700 underline-offset-4 hover:underline dark:text-teal-400"
+                  >
+                    Out in Tech
+                  </a>{" "}
+                  digital corps, building web products for LGBTQ+ activist and
+                  nonprofit organizations.
+                </p>
+                <p>
+                  I&apos;m based in Brooklyn and exploring full-stack or
+                  front-end roles on teams that value creativity, purpose-driven
+                  work, and continuous learning.
+                </p>
+              </div>
             </div>
           </div>
         </section>

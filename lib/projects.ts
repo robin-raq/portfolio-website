@@ -23,6 +23,8 @@ export const workProjects: WorkProject[] = [
       "Docker",
       "Playwright",
     ],
+    liveUrl: "https://ship-app-production-fd9d.up.railway.app/dashboard",
+    repoUrl: "https://github.com/robin-raq/shapeShip",
   },
   {
     id: "legacylens",
@@ -38,6 +40,8 @@ export const workProjects: WorkProject[] = [
       "FastAPI",
       "COBOL/Fortran parsing",
     ],
+    liveUrl: "https://legacylens-production-fd39.up.railway.app/",
+    repoUrl: "https://github.com/robin-raq/legacyLens",
   },
   {
     id: "agentforge",
@@ -53,6 +57,8 @@ export const workProjects: WorkProject[] = [
       "Evaluation framework",
       "Observability",
     ],
+    liveUrl: "https://agent-production-6f7a.up.railway.app/",
+    repoUrl: "https://github.com/robin-raq/agentforge-clinical-agent",
   },
   {
     id: "collabboard",
@@ -68,6 +74,20 @@ export const workProjects: WorkProject[] = [
       "WebSockets",
       "Canvas API",
     ],
+    liveUrl: "https://collabboard.raqdrobinson.com/",
+    repoUrl: "https://github.com/robin-raq/collabbboard-mvp",
+  },
+  {
+    id: "chatbridge",
+    title: "ChatBridge",
+    tier: "fellowship",
+    groupLabel: "GauntletAI | AI Engineering Fellow",
+    summary:
+      "Real-time chat / session UI deployed on Railway (paired with the chatbox codebase).",
+    stack: ["TypeScript", "React", "Node.js", "WebSockets"],
+    liveUrl:
+      "https://chatbridge-production.up.railway.app/session/96b8d04b-e031-4336-b444-645f0630afaf",
+    repoUrl: "https://github.com/robin-raq/chatbox",
   },
   {
     id: "massmutual-calculators",
@@ -84,7 +104,7 @@ export const workProjects: WorkProject[] = [
       "CI/CD",
       "Accessibility",
     ],
-    href: "https://www.massmutual.com/financial-wellness/calculators",
+    liveUrl: "https://www.massmutual.com/financial-wellness/calculators",
   },
   {
     id: "dobble",
@@ -94,7 +114,8 @@ export const workProjects: WorkProject[] = [
     summary:
       "Online Dobble-style card game: find the matching symbol between cards.",
     stack: ["JavaScript", "Ruby on Rails"],
-    href: "https://robin-raq.github.io/Dobl-frontend-/",
+    liveUrl: "https://robin-raq.github.io/Dobl-frontend-/",
+    repoUrl: "https://github.com/robin-raq/Dobl-frontend-",
   },
   {
     id: "hot-play",
@@ -104,7 +125,9 @@ export const workProjects: WorkProject[] = [
     summary:
       "YouTube-integrated Slack-style app for sharing and discussing music by genre.",
     stack: ["React", "Ruby on Rails"],
-    href: "https://www.loom.com/share/4d50e0e68b004e8aafd0ee955836fb5d",
+    liveUrl: "https://www.loom.com/share/4d50e0e68b004e8aafd0ee955836fb5d",
+    liveLabel: "Watch demo",
+    repoUrl: "https://github.com/robin-raq/hot-play",
   },
   {
     id: "nurture",
@@ -114,7 +137,9 @@ export const workProjects: WorkProject[] = [
     summary:
       "Single-page ecommerce experience for browsing and learning about houseplants.",
     stack: ["React", "Ruby on Rails"],
-    href: "https://www.loom.com/share/a7f9d086ba9e4b0d916cc452b142e9cc",
+    liveUrl: "https://www.loom.com/share/a7f9d086ba9e4b0d916cc452b142e9cc",
+    liveLabel: "Watch demo",
+    repoUrl: "https://github.com/robin-raq/nurture-frontend",
   },
 ];
 

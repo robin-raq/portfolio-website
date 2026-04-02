@@ -11,9 +11,10 @@ describe("workProjects", () => {
         "LegacyLens",
         "AgentForge",
         "CollabBoard",
+        "ChatBridge",
       ]),
     );
-    expect(fellowship.length).toBeGreaterThanOrEqual(4);
+    expect(fellowship.length).toBeGreaterThanOrEqual(5);
   });
 
   it("marks every project with a non-empty id and summary", () => {
