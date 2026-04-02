@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { ContactSection } from "@/components/ContactSection";
+import { DeveloperAvatar } from "@/components/DeveloperAvatar";
 import { ProjectCard } from "@/components/ProjectCard";
 import { getOrderedProjects } from "@/lib/projects";
 import { skillGroups } from "@/lib/skills";
@@ -67,21 +67,11 @@ export default function Home() {
             >
               About
             </h2>
-            <div className="mt-8 flex flex-col gap-8 md:flex-row md:items-start">
-              <figure className="mx-auto shrink-0 md:mx-0">
-                <Image
-                  src={PORTRAIT_SRC}
-                  alt="Raq Robinson"
-                  width={280}
-                  height={360}
-                  className="rounded-2xl border border-zinc-200/80 object-cover shadow-sm dark:border-zinc-700"
-                  sizes="(max-width: 768px) 240px, 280px"
-                  priority
-                />
-                <figcaption className="mt-2 text-center text-xs text-zinc-500 dark:text-zinc-500">
-                  Photo from my previous portfolio site
-                </figcaption>
-              </figure>
+            <div className="mt-8 flex flex-col gap-10 md:flex-row md:items-start">
+              <DeveloperAvatar
+                src={PORTRAIT_SRC}
+                alt="Raq Robinson, software engineer"
+              />
               <div className="max-w-2xl flex-1 space-y-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                 <p>
                   I&apos;m a senior fullstack engineer focused on clean
