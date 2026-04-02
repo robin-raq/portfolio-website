@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Fraunces } from "next/font/google";
 import { MainNav } from "@/components/MainNav";
-import { Providers } from "@/components/Providers";
 import { Sidebar } from "@/components/Sidebar";
 import "./globals.css";
 
@@ -44,11 +43,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${fraunces.variable} h-full antialiased`}
+      className={`dark ${dmSans.variable} ${fraunces.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen bg-sky-200 text-zinc-900 dark:bg-slate-950">
-        <Providers>
+      <body className="min-h-screen bg-slate-950 text-zinc-100">
           <a
             href="#main"
             className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-md focus:bg-cyan-600 focus:px-3 focus:py-2 focus:text-white"
@@ -67,7 +65,6 @@ export default function RootLayout({
               </footer>
             </div>
           </div>
-        </Providers>
       </body>
     </html>
   );

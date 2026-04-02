@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ThemeToggle } from "./ThemeToggle";
 
 const GITHUB = "https://github.com/robin-raq";
 const LINKEDIN = "https://www.linkedin.com/in/raq-robinson";
@@ -73,15 +72,6 @@ export function Sidebar() {
           <p className="mt-0.5 text-zinc-100">Brooklyn, NY</p>
         </li>
       </ul>
-
-      <div className="mt-auto pt-8">
-        <p className="mb-2 text-center text-[10px] font-medium uppercase tracking-wide text-zinc-500">
-          Color scheme
-        </p>
-        <div className="flex justify-center">
-          <ThemeToggle />
-        </div>
-      </div>
     </aside>
   );
 }

@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
+/* Dark-only site: html has class="dark" from layout */
 :root {
-  --background: #bae6fd;
-  --foreground: #18181b;
+  --background: #020617;
+  --foreground: #fafafa;
 }
 
 @theme inline {
@@ -10,18 +11,6 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-serif), ui-serif, Georgia, serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #020617;
-    --foreground: #fafafa;
-  }
-}
-
-.dark {
-  --background: #020617;
-  --foreground: #fafafa;
 }
 
 body {
