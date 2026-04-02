@@ -6,72 +6,75 @@ const LINKEDIN = "https://www.linkedin.com/in/raq-robinson";
 
 export function Sidebar() {
   return (
-    <aside className="flex w-full shrink-0 flex-col rounded-3xl border border-cyan-500/20 bg-zinc-900/95 p-6 shadow-2xl shadow-black/20 ring-1 ring-zinc-700/40 backdrop-blur-sm lg:w-72">
-      <Link href="/" className="mx-auto block outline-none ring-offset-2 ring-offset-zinc-900 focus-visible:ring-2 focus-visible:ring-cyan-500">
-        <div className="relative h-32 w-32 overflow-hidden rounded-full border-2 border-cyan-400/40 bg-zinc-800 shadow-lg ring-2 ring-zinc-800">
-          <Image
-            src="/avatar-flat-vector.png"
-            alt="Raq Robinson"
-            fill
-            className="object-cover"
-            sizes="128px"
-            priority
-          />
-        </div>
-      </Link>
-
-      <div className="mt-5 text-center">
-        <p className="font-serif text-xl font-semibold text-zinc-50">Raq Robinson</p>
-        <p className="mt-2 inline-block rounded-md border border-cyan-500/35 bg-zinc-950/80 px-2.5 py-1 font-mono text-[11px] text-cyan-200/90">
-          {"{ senior fullstack engineer }"}
-        </p>
+    <aside className="win95-outset flex w-full shrink-0 flex-col overflow-hidden rounded-sm bg-[#c0c0c0] lg:w-72">
+      <div className="win-titlebar shrink-0">
+        <span aria-hidden className="inline-block h-3 w-3 bg-[#c0c0c0] win95-outset" />
+        <span>Profile</span>
       </div>
+      <div className="flex flex-1 flex-col p-4 font-sans">
+        <Link
+          href="/"
+          className="mx-auto block outline-none focus-visible:ring-2 focus-visible:ring-[#000080] focus-visible:ring-offset-2 focus-visible:ring-offset-[#c0c0c0]"
+        >
+          <div className="win95-inset relative h-28 w-28 overflow-hidden rounded-full bg-white p-0.5">
+            <div className="relative h-full w-full overflow-hidden rounded-full border border-[#808080]">
+              <Image
+                src="/avatar-flat-vector.png"
+                alt="Raq Robinson"
+                fill
+                className="object-cover"
+                sizes="112px"
+                priority
+              />
+            </div>
+          </div>
+        </Link>
 
-      <ul className="mt-8 space-y-4 text-sm">
-        <li>
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
-            Email
+        <div className="mt-4 text-center">
+          <p className="text-lg font-bold text-black">Raq Robinson</p>
+          <p className="mt-2 inline-block win95-inset bg-[#fffff0] px-2 py-1 font-mono text-[10px] text-[#000080]">
+            {"{ senior fullstack engineer }"}
           </p>
-          <Link
-            href="/contact"
-            className="mt-0.5 block text-zinc-100 underline-offset-2 hover:text-cyan-300 hover:underline"
-          >
-            Contact form
-          </Link>
-        </li>
-        <li>
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
-            LinkedIn
-          </p>
-          <a
-            href={LINKEDIN}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-0.5 block truncate text-zinc-100 underline-offset-2 hover:text-cyan-300 hover:underline"
-          >
-            linkedin.com/in/raq-robinson
-          </a>
-        </li>
-        <li>
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
-            GitHub
-          </p>
-          <a
-            href={GITHUB}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-0.5 block truncate text-zinc-100 underline-offset-2 hover:text-cyan-300 hover:underline"
-          >
-            github.com/robin-raq
-          </a>
-        </li>
-        <li>
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
-            Location
-          </p>
-          <p className="mt-0.5 text-zinc-100">Brooklyn, NY</p>
-        </li>
-      </ul>
+        </div>
+
+        <ul className="mt-6 space-y-3 text-[12px]">
+          <li>
+            <p className="font-bold text-[#000080]">Email</p>
+            <Link
+              href="/contact"
+              className="mt-0.5 block text-[#0000cc] underline hover:text-[#000080]"
+            >
+              Contact form
+            </Link>
+          </li>
+          <li>
+            <p className="font-bold text-[#000080]">LinkedIn</p>
+            <a
+              href={LINKEDIN}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-0.5 block truncate text-[#0000cc] underline hover:text-[#000080]"
+            >
+              linkedin.com/in/raq-robinson
+            </a>
+          </li>
+          <li>
+            <p className="font-bold text-[#000080]">GitHub</p>
+            <a
+              href={GITHUB}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-0.5 block truncate text-[#0000cc] underline hover:text-[#000080]"
+            >
+              github.com/robin-raq
+            </a>
+          </li>
+          <li>
+            <p className="font-bold text-[#000080]">Location</p>
+            <p className="mt-0.5 text-black">Brooklyn, NY</p>
+          </li>
+        </ul>
+      </div>
     </aside>
   );
 }

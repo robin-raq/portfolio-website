@@ -22,9 +22,9 @@ export function ProjectsPanel() {
       : all.filter((p) => p.tier === filter);
 
   return (
-    <div>
+    <div className="font-sans">
       <div
-        className="mb-8 flex flex-wrap gap-2 border-b border-zinc-700/60 pb-4"
+        className="mb-6 flex flex-wrap gap-2 border-b border-dotted border-[#808080] pb-3"
         role="tablist"
         aria-label="Filter projects"
       >
@@ -37,11 +37,11 @@ export function ProjectsPanel() {
               role="tab"
               aria-selected={active}
               onClick={() => setFilter(f.id)}
-              className={`rounded-md px-3 py-1.5 text-sm font-medium transition ${
+              className={
                 active
-                  ? "bg-cyan-950/80 text-cyan-300 ring-1 ring-cyan-500/40"
-                  : "text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200"
-              }`}
+                  ? "win-btn-active win-btn rounded-sm text-[11px]"
+                  : "win-btn rounded-sm text-[11px]"
+              }
             >
               {f.label}
             </button>
@@ -49,7 +49,7 @@ export function ProjectsPanel() {
         })}
       </div>
 
-      <ul className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
+      <ul className="grid gap-4 sm:grid-cols-1 lg:grid-cols-2">
         {filtered.map((p) => (
           <li key={p.id}>
             <ProjectCard project={p} />

@@ -10,25 +10,19 @@ export function ContactSection({ formAction }: Props) {
   const hasForm = Boolean(formAction && formAction.length > 0);
 
   return (
-    <section aria-labelledby="contact-heading">
-      <h2
-        id="contact-heading"
-        className="font-serif text-2xl font-semibold text-zinc-50"
-      >
-        Contact
-      </h2>
-      <p className="mt-2 max-w-2xl text-sm text-zinc-400">
+    <section aria-label="Contact form" className="font-sans">
+      <p className="max-w-2xl text-[13px] leading-relaxed text-[#2a2a2a]">
         Prefer GitHub or LinkedIn for a first touch; use the form when it is
         configured with your Formspree (or similar) endpoint.
       </p>
 
-      <ul className="mt-6 flex flex-wrap gap-4 text-sm">
+      <ul className="mt-4 flex flex-wrap gap-4 text-[13px]">
         <li>
           <a
             href={GITHUB}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-cyan-400 underline-offset-4 hover:text-cyan-300 hover:underline"
+            className="text-[#0000cc] underline hover:text-[#000080]"
           >
             GitHub
           </a>
@@ -38,7 +32,7 @@ export function ContactSection({ formAction }: Props) {
             href={LINKEDIN}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-cyan-400 underline-offset-4 hover:text-cyan-300 hover:underline"
+            className="text-[#0000cc] underline hover:text-[#000080]"
           >
             LinkedIn
           </a>
@@ -49,11 +43,11 @@ export function ContactSection({ formAction }: Props) {
         <form
           action={formAction}
           method="POST"
-          className="mt-8 max-w-lg space-y-4"
+          className="mt-6 max-w-lg space-y-3"
         >
           <input type="hidden" name="_gotcha" tabIndex={-1} autoComplete="off" />
           <div>
-            <label htmlFor="contact-name" className="sr-only">
+            <label htmlFor="contact-name" className="mb-1 block text-[11px] font-bold text-[#000080]">
               Name
             </label>
             <input
@@ -61,12 +55,11 @@ export function ContactSection({ formAction }: Props) {
               name="name"
               type="text"
               required
-              placeholder="Name"
-              className="w-full rounded-lg border border-zinc-600 bg-zinc-900/80 px-3 py-2 text-zinc-50 shadow-inner placeholder:text-zinc-500"
+              className="win95-inset w-full bg-white px-2 py-1.5 text-sm text-black"
             />
           </div>
           <div>
-            <label htmlFor="contact-email" className="sr-only">
+            <label htmlFor="contact-email" className="mb-1 block text-[11px] font-bold text-[#000080]">
               Email
             </label>
             <input
@@ -74,12 +67,11 @@ export function ContactSection({ formAction }: Props) {
               name="email"
               type="email"
               required
-              placeholder="Email"
-              className="w-full rounded-lg border border-zinc-600 bg-zinc-900/80 px-3 py-2 text-zinc-50 shadow-inner placeholder:text-zinc-500"
+              className="win95-inset w-full bg-white px-2 py-1.5 text-sm text-black"
             />
           </div>
           <div>
-            <label htmlFor="contact-message" className="sr-only">
+            <label htmlFor="contact-message" className="mb-1 block text-[11px] font-bold text-[#000080]">
               Message
             </label>
             <textarea
@@ -87,21 +79,17 @@ export function ContactSection({ formAction }: Props) {
               name="message"
               required
               rows={4}
-              placeholder="Message"
-              className="w-full rounded-lg border border-zinc-600 bg-zinc-900/80 px-3 py-2 text-zinc-50 shadow-inner placeholder:text-zinc-500"
+              className="win95-inset w-full bg-white px-2 py-1.5 text-sm text-black"
             />
           </div>
-          <button
-            type="submit"
-            className="rounded-lg bg-cyan-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-cyan-500"
-          >
+          <button type="submit" className="win-btn rounded-sm text-[12px]">
             Send
           </button>
         </form>
       ) : (
-        <p className="mt-6 text-sm text-zinc-500">
+        <p className="mt-4 text-[13px] text-[#404040]">
           Form endpoint not set. Add{" "}
-          <code className="rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-300">
+          <code className="win95-inset bg-white px-1.5 py-0.5 font-mono text-[11px] text-black">
             NEXT_PUBLIC_CONTACT_FORM_ACTION
           </code>{" "}
           to enable the contact form.

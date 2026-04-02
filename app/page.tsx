@@ -14,7 +14,7 @@ export default function HomePage() {
         title="About me"
         description="I build secure, scalable, user-centered software — from AI systems and RAG pipelines to enterprise financial tools."
       />
-      <div className="max-w-2xl space-y-4 text-sm leading-relaxed text-zinc-400">
+      <div className="max-w-2xl space-y-4 text-[13px] leading-relaxed text-[#2a2a2a]">
         <p>
           I&apos;m a senior fullstack engineer focused on clean architecture,
           thoughtful UX, and shipping production-ready products. My background
@@ -28,7 +28,7 @@ export default function HomePage() {
             href="https://outintech.com/digital-corps/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-cyan-400 underline-offset-4 hover:text-cyan-300 hover:underline"
+            className="text-[#0000cc] underline hover:text-[#000080]"
           >
             Out in Tech
           </a>{" "}

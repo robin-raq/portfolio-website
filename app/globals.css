@@ -1,19 +1,85 @@
 @import "tailwindcss";
 
-/* Dark-only site: html has class="dark" from layout */
+/* Retro Windows / Word 97–era palette — readable “paper” + gray chrome */
 :root {
-  --background: #020617;
-  --foreground: #fafafa;
+  --win-desktop: #008080;
+  --win-gray: #c0c0c0;
+  --win-gray-dark: #808080;
+  --win-titlebar: #000080;
+  --win-paper: #fffff0;
+  --win-text: #1a1a1a;
+  --win-link: #0000cc;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-serif), ui-serif, Georgia, serif;
+  --font-sans: var(--font-sans), Tahoma, "Segoe UI", sans-serif;
+  --font-serif: var(--font-doc), Georgia, "Times New Roman", serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--win-desktop);
+  color: var(--win-text);
+}
+
+/* Classic raised / sunken bevels (Win95) */
+.win95-outset {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #ffffff #404040 #404040 #ffffff;
+}
+
+.win95-inset {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #404040 #ffffff #ffffff #404040;
+}
+
+.win-titlebar {
+  background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+  color: #ffffff;
+  font-family: Tahoma, "Segoe UI", sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.win-toolbar {
+  background: var(--win-gray);
+  border-bottom: 2px solid;
+  border-color: #404040 #ffffff #ffffff #404040;
+  padding: 6px 8px;
+}
+
+.doc-paper {
+  background: var(--win-paper);
+  color: var(--win-text);
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #404040;
+  border: 2px solid;
+  border-color: #404040 #ffffff #ffffff #404040;
+}
+
+.win-btn {
+  background: var(--win-gray);
+  border-width: 2px;
+  border-style: solid;
+  border-color: #ffffff #404040 #404040 #ffffff;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-family: Tahoma, "Segoe UI", sans-serif;
+  color: #000000;
+}
+
+.win-btn:hover {
+  background: #d4d0c8;
+}
+
+.win-btn-active {
+  border-color: #404040 #ffffff #ffffff #404040;
+  background: #a0a0a0;
 }

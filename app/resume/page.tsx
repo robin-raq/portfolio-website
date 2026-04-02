@@ -13,20 +13,20 @@ export default function ResumePage() {
         title="Resume"
         description="PDF is the source of truth for applications."
       />
-      <p className="text-sm text-zinc-400">
+      <p className="font-sans text-[13px] text-[#2a2a2a]">
         <a
           href="/resume.pdf"
           download
-          className="font-medium text-cyan-400 underline-offset-4 hover:text-cyan-300 hover:underline"
+          className="text-[#0000cc] underline hover:text-[#000080]"
         >
           Download resume.pdf
         </a>
       </p>
-      <div className="mt-8 min-h-[70vh] w-full overflow-hidden rounded-xl border border-zinc-600 bg-zinc-950">
+      <div className="win95-inset mt-6 min-h-[65vh] w-full overflow-hidden bg-[#525252] p-1">
         <iframe
           title="Resume PDF"
           src="/resume.pdf"
-          className="h-[70vh] w-full"
+          className="h-[65vh] w-full bg-white"
         />
       </div>
     </>
