@@ -9,9 +9,9 @@ export function ProjectCard({ project }: Props) {
   const hasLinks = Boolean(project.liveUrl || project.repoUrl);
 
   return (
-    <article className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm transition hover:border-teal-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-950">
+    <article className="rounded-2xl border border-cyan-500/15 bg-zinc-800/40 p-6 shadow-lg shadow-black/20 ring-1 ring-zinc-700/50 transition hover:border-cyan-500/30 hover:bg-zinc-800/60">
       {project.imageSrc ? (
-        <div className="mb-4 overflow-hidden rounded-xl border border-zinc-200/80 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
+        <div className="mb-4 overflow-hidden rounded-xl border border-zinc-600/50 bg-zinc-900/80">
           {/* eslint-disable-next-line @next/next/no-img-element -- external / data URLs; static export */}
           <img
             src={project.imageSrc}
@@ -21,10 +21,10 @@ export function ProjectCard({ project }: Props) {
           />
         </div>
       ) : null}
-      <h3 className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+      <h3 className="text-lg font-semibold tracking-tight text-zinc-50">
         {project.title}
       </h3>
-      <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+      <p className="mt-2 text-sm leading-relaxed text-zinc-400">
         {project.summary}
       </p>
       {hasLinks ? (
@@ -34,7 +34,7 @@ export function ProjectCard({ project }: Props) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center rounded-lg border border-teal-600/30 bg-teal-50 px-3 py-1.5 text-sm font-medium text-teal-800 transition hover:bg-teal-100 dark:border-teal-500/40 dark:bg-teal-950/50 dark:text-teal-200 dark:hover:bg-teal-900/50"
+              className="inline-flex items-center rounded-lg border border-cyan-500/35 bg-cyan-950/40 px-3 py-1.5 text-sm font-medium text-cyan-200 transition hover:bg-cyan-950/70"
             >
               {liveLabel}
               <span className="sr-only"> (opens in a new tab)</span>
@@ -45,7 +45,7 @@ export function ProjectCard({ project }: Props) {
               href={project.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center rounded-lg border border-zinc-300 bg-white px-3 py-1.5 text-sm font-medium text-zinc-800 transition hover:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
+              className="inline-flex items-center rounded-lg border border-zinc-600 bg-zinc-900/80 px-3 py-1.5 text-sm font-medium text-zinc-100 transition hover:bg-zinc-800"
             >
               GitHub
               <span className="sr-only"> (opens in a new tab)</span>
@@ -57,7 +57,7 @@ export function ProjectCard({ project }: Props) {
         {project.stack.map((tech) => (
           <li
             key={tech}
-            className="rounded-full border border-zinc-200/80 bg-zinc-50 px-2.5 py-0.5 text-xs text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900/60 dark:text-zinc-300"
+            className="rounded-full border border-zinc-600/60 bg-zinc-900/50 px-2.5 py-0.5 text-xs text-zinc-300"
           >
             {tech}
           </li>

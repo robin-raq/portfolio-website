@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageHeader } from "@/components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Resume",
@@ -7,30 +8,27 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
   return (
-    <main
-      id="main"
-      className="mx-auto flex max-w-5xl flex-1 flex-col px-4 py-12 sm:px-6"
-    >
-      <h1 className="font-serif text-3xl font-semibold text-zinc-900 dark:text-zinc-50">
-        Resume
-      </h1>
-      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        PDF is the source of truth for applications.{" "}
+    <>
+      <PageHeader
+        title="Resume"
+        description="PDF is the source of truth for applications."
+      />
+      <p className="text-sm text-zinc-400">
         <a
           href="/resume.pdf"
           download
-          className="font-medium text-teal-700 underline-offset-4 hover:underline dark:text-teal-400"
+          className="font-medium text-cyan-400 underline-offset-4 hover:text-cyan-300 hover:underline"
         >
           Download resume.pdf
         </a>
       </p>
-      <div className="mt-8 min-h-[75vh] w-full overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="mt-8 min-h-[70vh] w-full overflow-hidden rounded-xl border border-zinc-600 bg-zinc-950">
         <iframe
           title="Resume PDF"
           src="/resume.pdf"
-          className="h-[75vh] w-full"
+          className="h-[70vh] w-full"
         />
       </div>
-    </main>
+    </>
   );
 }

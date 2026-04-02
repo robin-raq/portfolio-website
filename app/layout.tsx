@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { DM_Sans, Fraunces } from "next/font/google";
+import { MainNav } from "@/components/MainNav";
 import { Providers } from "@/components/Providers";
-import { SiteFooter } from "@/components/SiteFooter";
-import { SiteHeader } from "@/components/SiteHeader";
+import { Sidebar } from "@/components/Sidebar";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -44,14 +44,29 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${fraunces.variable} h-full scroll-smooth antialiased`}
+      className={`${dmSans.variable} ${fraunces.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-zinc-50 font-sans text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50">
+      <body className="min-h-screen bg-sky-200 text-zinc-900 dark:bg-slate-950">
         <Providers>
-          <SiteHeader />
-          {children}
-          <SiteFooter />
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-md focus:bg-cyan-600 focus:px-3 focus:py-2 focus:text-white"
+          >
+            Skip to content
+          </a>
+          <div className="mx-auto flex min-h-screen max-w-6xl flex-col gap-6 p-4 pb-8 lg:flex-row lg:gap-8 lg:p-8">
+            <Sidebar />
+            <div className="flex min-h-[calc(100vh-2rem)] flex-1 flex-col rounded-3xl border border-cyan-500/20 bg-zinc-900/95 p-6 text-zinc-100 shadow-2xl shadow-black/30 ring-1 ring-zinc-700/50 backdrop-blur-sm lg:p-10">
+              <MainNav />
+              <div id="main" className="flex flex-1 flex-col pt-8">
+                {children}
+              </div>
+              <footer className="mt-auto border-t border-zinc-700/60 pt-8 text-center text-xs text-zinc-500">
+                © {new Date().getFullYear()} Raq Robinson
+              </footer>
+            </div>
+          </div>
         </Providers>
       </body>
     </html>
