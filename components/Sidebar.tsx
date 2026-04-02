@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { PROFILE_AVATAR_SRC } from "@/lib/avatar";
 
@@ -28,13 +27,15 @@ export function Sidebar() {
           className="mx-auto block outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]"
         >
           <div className="relative h-28 w-28 overflow-hidden rounded-full border border-[rgba(var(--term-glow-rgb),0.38)] bg-term-surface shadow-[0_0_22px_rgba(var(--term-glow-rgb),0.14)]">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element -- next/image omits basePath in static HTML; GitHub Pages needs publicPath() */}
+            <img
               src={PROFILE_AVATAR_SRC}
               alt="Raq Robinson"
-              fill
-              className="object-cover"
-              sizes="112px"
-              priority
+              width={112}
+              height={112}
+              className="h-full w-full object-cover"
+              decoding="async"
+              fetchPriority="high"
             />
           </div>
         </Link>
