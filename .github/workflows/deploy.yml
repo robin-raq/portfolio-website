@@ -1,5 +1,6 @@
 name: Deploy to GitHub Pages
 
+# Live URL: https://robin-raq.github.io/ (user site — requires repo name robin-raq.github.io)
 on:
   push:
     branches: [main]
@@ -31,11 +32,26 @@ jobs:
       - name: Test
         run: npm run test
 
+      # User site at domain root — must NOT use /portfolio-website/ prefix or CSS/JS 404 (unstyled page).
       - name: Build static site
         env:
-          BASE_PATH: /${{ github.event.repository.name }}
-          NEXT_PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
-        run: npm run build
+          BASE_PATH: ""
+          NEXT_PUBLIC_SITE_URL: https://robin-raq.github.io
+        run: |
+          rm -rf .next
+          npm run build
+
+      - name: Ensure .nojekyll (Jekyll must not skip _next)
+        run: touch out/.nojekyll && ls -la out/.nojekyll
+
+      - name: Verify asset paths are root-based
+        run: |
+          set -e
+          if grep -rq "portfolio-website/_next" out --include="*.html" --include="*.txt" 2>/dev/null; then
+            echo "::error::Build still references /portfolio-website/ — unset BASE_PATH for user site robin-raq.github.io"
+            exit 1
+          fi
+          echo "Sample CSS link:" && grep -o 'href="/_next[^"]*\.css"' out/index.html | head -1
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
