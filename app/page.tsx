@@ -4,7 +4,8 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { getOrderedProjects } from "@/lib/projects";
 import { skillGroups } from "@/lib/skills";
 
-const PORTRAIT_SRC = "https://iamraq.github.io/public/img/me2.jpg";
+/** Flat vector avatar (generated from your photo + style reference); file in /public */
+const PORTRAIT_SRC = "/avatar-flat-vector.png";
 
 export default function Home() {
   const projects = getOrderedProjects();
@@ -70,7 +71,8 @@ export default function Home() {
             <div className="mt-8 flex flex-col gap-10 md:flex-row md:items-start">
               <DeveloperAvatar
                 src={PORTRAIT_SRC}
-                alt="Raq Robinson, software engineer"
+                alt="Raq Robinson — illustrated profile avatar"
+                variant="illustration"
               />
               <div className="max-w-2xl flex-1 space-y-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                 <p>

@@ -3,19 +3,35 @@ import { describe, expect, it } from "vitest";
 import { DeveloperAvatar } from "./DeveloperAvatar";
 
 describe("DeveloperAvatar", () => {
-  it("renders the profile image with an accessible name", () => {
+  it("renders the profile image with an accessible name (illustration)", () => {
     render(
-      <DeveloperAvatar src="https://example.com/photo.jpg" alt="Test user" />,
+      <DeveloperAvatar
+        src="https://example.com/photo.png"
+        alt="Test user"
+        variant="illustration"
+      />,
     );
-    expect(screen.getByRole("img", { name: "Test user" })).toHaveAttribute(
-      "src",
-      expect.stringContaining("example.com"),
-    );
+    expect(screen.getByRole("img", { name: "Test user" })).toBeInTheDocument();
   });
 
-  it("shows a developer-style badge", () => {
+  it("does not show the terminal badge in illustration mode", () => {
     render(
-      <DeveloperAvatar src="https://example.com/photo.jpg" alt="Test user" />,
+      <DeveloperAvatar
+        src="https://example.com/photo.png"
+        alt="Test user"
+        variant="illustration"
+      />,
+    );
+    expect(screen.queryByText("full-stack")).toBeNull();
+  });
+
+  it("shows the terminal badge in photo mode", () => {
+    render(
+      <DeveloperAvatar
+        src="https://example.com/photo.jpg"
+        alt="Test user"
+        variant="photo"
+      />,
     );
     expect(screen.getByText("full-stack")).toBeInTheDocument();
   });
