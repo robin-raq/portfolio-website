@@ -1,23 +1,21 @@
 import type { Metadata } from "next";
-import { DM_Sans, Merriweather } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import { MainNav } from "@/components/MainNav";
 import { Sidebar } from "@/components/Sidebar";
 import "./globals.css";
 
-const dmSans = DM_Sans({
-  variable: "--font-sans",
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
+  variable: "--font-mono",
   weight: ["400", "500", "600", "700"],
 });
 
-const merriweather = Merriweather({
-  variable: "--font-doc",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
+/** Canonical public URL — set NEXT_PUBLIC_SITE_URL in CI for GitHub Pages. */
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://raqdrobinson.com";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://raqdrobinson.com"),
+  metadataBase: new URL(siteUrl.endsWith("/") ? siteUrl.slice(0, -1) : siteUrl),
   title: {
     default: "Raq Robinson | Senior Fullstack Engineer",
     template: "%s | Raq Robinson",
@@ -28,7 +26,7 @@ export const metadata: Metadata = {
     title: "Raq Robinson | Senior Fullstack Engineer",
     description:
       "Portfolio: GauntletAI fellowship work, MassMutual, and selected projects.",
-    url: "https://raqdrobinson.com",
+    url: siteUrl,
     siteName: "Raq Robinson",
     locale: "en_US",
     type: "website",
@@ -43,33 +41,46 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${merriweather.variable} h-full antialiased`}
+      className={`${jetbrainsMono.variable} h-full font-mono antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen bg-[#008080] p-3 font-sans text-[#1a1a1a] sm:p-6">
+      <body className="crt-scanlines relative min-h-screen bg-term-bg p-3 text-term-fg sm:p-6">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-sm focus:bg-[#000080] focus:px-3 focus:py-2 focus:text-white focus:outline-none"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-sm focus:border focus:border-[var(--term-focus)] focus:bg-term-surface focus:px-3 focus:py-2 focus:text-term-bright focus:outline-none"
         >
           Skip to content
         </a>
-        <div className="mx-auto flex min-h-[calc(100vh-1.5rem)] max-w-6xl flex-col gap-4 lg:flex-row lg:gap-5">
+        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-1.5rem)] max-w-6xl flex-col gap-4 lg:flex-row lg:gap-5">
           <Sidebar />
-          <div className="win95-outset flex min-h-[calc(100vh-2rem)] flex-1 flex-col overflow-hidden rounded-sm bg-[#c0c0c0]">
-            <div className="win-titlebar shrink-0 rounded-t-sm">
-              <span aria-hidden className="inline-block h-3 w-3 bg-[#c0c0c0] win95-outset" />
-              <span>Portfolio — Microsoft Word</span>
+          <div className="term-panel flex min-h-[calc(100vh-2rem)] flex-1 flex-col overflow-hidden rounded-sm">
+            <div className="term-titlebar flex shrink-0 items-center gap-2 px-3 py-2">
+              <span aria-hidden className="text-term-dim">
+                ●
+              </span>
+              <span className="term-glow font-semibold tracking-[0.2em]">
+                PORTFOLIO.EXE — FULLSTACK.EXPLORER
+              </span>
             </div>
-            <div className="win-toolbar shrink-0">
+            <pre
+              className="term-rule shrink-0 overflow-x-auto border-b border-term px-3 py-1 text-[10px] text-term-dim sm:text-[11px]"
+              aria-hidden
+            >
+              ═══════════════════════════════════════════════════════════════
+            </pre>
+            <div className="border-b border-term bg-term-bg px-3 py-2">
+              <p className="mb-2 text-[10px] uppercase tracking-widest text-term-dim opacity-80">
+                SYSTEM READY — ROUTES INDEXED — STATIC EXPORT ONLINE
+              </p>
               <MainNav />
             </div>
             <div
               id="main"
-              className={`${merriweather.className} doc-paper mx-2 mb-2 mt-1 flex flex-1 flex-col rounded-sm p-5 sm:mx-3 sm:mb-3 sm:p-8`}
+              className="relative mx-2 mb-2 mt-2 flex flex-1 flex-col rounded-sm border border-term bg-term-inset p-4 sm:mx-3 sm:mb-3 sm:p-6"
             >
               <div className="flex flex-1 flex-col">{children}</div>
-              <footer className="mt-10 border-t-2 border-dotted border-[#808080] pt-4 text-center font-sans text-xs text-[#404040]">
-                © {new Date().getFullYear()} Raq Robinson
+              <footer className="mt-10 border-t border-dashed border-term pt-4 text-center text-[10px] text-term-dim">
+                © {new Date().getFullYear()} Raq Robinson · EOF
               </footer>
             </div>
           </div>

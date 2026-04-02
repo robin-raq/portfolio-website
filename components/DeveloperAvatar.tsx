@@ -9,8 +9,8 @@ type Props = {
 };
 
 /**
- * Profile image: either a flat vector avatar (self-contained art + circle frame in asset)
- * or a photo with subtle “dev screen” framing.
+ * Profile image: either the flat vector portrait (non-binary / androgynous presentation;
+ * see `lib/avatar.ts` for canonical `src`) or a photo with subtle “dev screen” framing.
  */
 export function DeveloperAvatar({
   src,

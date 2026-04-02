@@ -9,20 +9,22 @@ export function ProjectCard({ project }: Props) {
   const hasLinks = Boolean(project.liveUrl || project.repoUrl);
 
   return (
-    <article className="win95-outset rounded-sm bg-white p-4 font-sans shadow-sm">
+    <article className="rounded-sm border border-term bg-term-inset p-4 font-mono shadow-[inset_0_0_24px_rgba(0,0,0,0.35)]">
       {project.imageSrc ? (
-        <div className="win95-inset mb-3 overflow-hidden bg-[#f5f5f5]">
+        <div className="mb-3 overflow-hidden border border-term bg-black/50">
           {/* eslint-disable-next-line @next/next/no-img-element -- external / data URLs; static export */}
           <img
             src={project.imageSrc}
             alt={project.imageAlt ?? ""}
-            className="max-h-48 w-full object-cover object-center"
+            className="max-h-48 w-full object-cover object-center opacity-90"
             loading="lazy"
           />
         </div>
       ) : null}
-      <h3 className="text-base font-bold text-[#000080]">{project.title}</h3>
-      <p className="mt-2 text-[13px] leading-snug text-[#2a2a2a]">
+      <h3 className="text-sm font-bold uppercase tracking-wide text-term-bright">
+        {project.title}
+      </h3>
+      <p className="mt-2 text-[12px] leading-relaxed text-term-body">
         {project.summary}
       </p>
       {hasLinks ? (
@@ -32,9 +34,9 @@ export function ProjectCard({ project }: Props) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="win-btn rounded-sm text-[11px] no-underline"
+              className="term-btn rounded-sm text-[10px] no-underline"
             >
-              {liveLabel}
+              [{liveLabel}]
               <span className="sr-only"> (opens in a new tab)</span>
             </a>
           ) : null}
@@ -43,9 +45,9 @@ export function ProjectCard({ project }: Props) {
               href={project.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="win-btn rounded-sm text-[11px] no-underline"
+              className="term-btn rounded-sm text-[10px] no-underline"
             >
-              GitHub
+              [GitHub]
               <span className="sr-only"> (opens in a new tab)</span>
             </a>
           ) : null}
@@ -55,7 +57,7 @@ export function ProjectCard({ project }: Props) {
         {project.stack.map((tech) => (
           <li
             key={tech}
-            className="win95-inset bg-[#fffff0] px-2 py-0.5 text-[11px] text-[#1a1a1a]"
+            className="border border-term bg-term-bg px-2 py-0.5 text-[10px] text-term-dim"
           >
             {tech}
           </li>

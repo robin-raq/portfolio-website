@@ -22,9 +22,12 @@ export function ProjectsPanel() {
       : all.filter((p) => p.tier === filter);
 
   return (
-    <div className="font-sans">
+    <div className="font-mono">
+      <p className="mb-3 text-[10px] uppercase tracking-widest text-term-dim">
+        &gt; filter --namespace=
+      </p>
       <div
-        className="mb-6 flex flex-wrap gap-2 border-b border-dotted border-[#808080] pb-3"
+        className="mb-6 flex flex-wrap gap-2 border-b border-term pb-4"
         role="tablist"
         aria-label="Filter projects"
       >
@@ -39,11 +42,11 @@ export function ProjectsPanel() {
               onClick={() => setFilter(f.id)}
               className={
                 active
-                  ? "win-btn-active win-btn rounded-sm text-[11px]"
-                  : "win-btn rounded-sm text-[11px]"
+                  ? "term-btn-active term-btn rounded-sm text-[10px] uppercase tracking-wide"
+                  : "term-btn rounded-sm text-[10px] uppercase tracking-wide"
               }
             >
-              {f.label}
+              [{f.label}]
             </button>
           );
         })}

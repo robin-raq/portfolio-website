@@ -1,77 +1,93 @@
 import Image from "next/image";
 import Link from "next/link";
+import { PROFILE_AVATAR_SRC } from "@/lib/avatar";
 
 const GITHUB = "https://github.com/robin-raq";
 const LINKEDIN = "https://www.linkedin.com/in/raq-robinson";
 
+const linkClass =
+  "mt-0.5 block text-term-bright underline decoration-green-800/60 underline-offset-2 hover:text-[var(--term-link-hover)]";
+
 export function Sidebar() {
   return (
-    <aside className="win95-outset flex w-full shrink-0 flex-col overflow-hidden rounded-sm bg-[#c0c0c0] lg:w-72">
-      <div className="win-titlebar shrink-0">
-        <span aria-hidden className="inline-block h-3 w-3 bg-[#c0c0c0] win95-outset" />
-        <span>Profile</span>
+    <aside className="term-panel flex w-full shrink-0 flex-col overflow-hidden rounded-sm lg:w-72">
+      <div className="term-titlebar px-3 py-2">
+        <span className="text-[10px] tracking-[0.25em]">
+          USER@PORTFOLIO:~$
+        </span>
       </div>
-      <div className="flex flex-1 flex-col p-4 font-sans">
+      <pre
+        className="term-rule border-b border-term px-2 py-1 text-[9px] text-term-dim sm:text-[10px]"
+        aria-hidden
+      >
+        ═══════════════════════
+      </pre>
+      <div className="flex flex-1 flex-col p-4">
         <Link
           href="/"
-          className="mx-auto block outline-none focus-visible:ring-2 focus-visible:ring-[#000080] focus-visible:ring-offset-2 focus-visible:ring-offset-[#c0c0c0]"
+          className="mx-auto block outline-none focus-visible:ring-2 focus-visible:ring-[var(--term-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--term-bg)]"
         >
-          <div className="win95-inset relative h-28 w-28 overflow-hidden rounded-full bg-white p-0.5">
-            <div className="relative h-full w-full overflow-hidden rounded-full border border-[#808080]">
-              <Image
-                src="/avatar-flat-vector.png"
-                alt="Raq Robinson"
-                fill
-                className="object-cover"
-                sizes="112px"
-                priority
-              />
-            </div>
+          <div className="relative h-28 w-28 overflow-hidden rounded-full border border-[rgba(var(--term-glow-rgb),0.38)] bg-term-surface shadow-[0_0_22px_rgba(var(--term-glow-rgb),0.14)]">
+            <Image
+              src={PROFILE_AVATAR_SRC}
+              alt="Raq Robinson"
+              fill
+              className="object-cover"
+              sizes="112px"
+              priority
+            />
           </div>
         </Link>
 
         <div className="mt-4 text-center">
-          <p className="text-lg font-bold text-black">Raq Robinson</p>
-          <p className="mt-2 inline-block win95-inset bg-[#fffff0] px-2 py-1 font-mono text-[10px] text-[#000080]">
-            {"{ senior fullstack engineer }"}
+          <p className="term-glow text-base font-bold tracking-wide text-term-bright">
+            Raq Robinson
+          </p>
+          <p className="mt-2 inline-block rounded border border-term bg-term-bg px-2 py-1 font-mono text-[10px] text-term-fg">
+            {"{ senior_fullstack_engineer }"}
           </p>
         </div>
 
-        <ul className="mt-6 space-y-3 text-[12px]">
+        <ul className="mt-6 space-y-3 text-[11px] leading-snug">
           <li>
-            <p className="font-bold text-[#000080]">Email</p>
-            <Link
-              href="/contact"
-              className="mt-0.5 block text-[#0000cc] underline hover:text-[#000080]"
-            >
-              Contact form
+            <p className="font-semibold uppercase tracking-wider text-term-dim">
+              :: email
+            </p>
+            <Link href="/contact" className={linkClass}>
+              ./contact
             </Link>
           </li>
           <li>
-            <p className="font-bold text-[#000080]">LinkedIn</p>
+            <p className="font-semibold uppercase tracking-wider text-term-dim">
+              :: linkedin
+            </p>
             <a
               href={LINKEDIN}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-0.5 block truncate text-[#0000cc] underline hover:text-[#000080]"
+              className={`truncate ${linkClass}`}
             >
               linkedin.com/in/raq-robinson
             </a>
           </li>
           <li>
-            <p className="font-bold text-[#000080]">GitHub</p>
+            <p className="font-semibold uppercase tracking-wider text-term-dim">
+              :: github
+            </p>
             <a
               href={GITHUB}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-0.5 block truncate text-[#0000cc] underline hover:text-[#000080]"
+              className={`truncate ${linkClass}`}
             >
               github.com/robin-raq
             </a>
           </li>
           <li>
-            <p className="font-bold text-[#000080]">Location</p>
-            <p className="mt-0.5 text-black">Brooklyn, NY</p>
+            <p className="font-semibold uppercase tracking-wider text-term-dim">
+              :: location
+            </p>
+            <p className="mt-0.5 text-term-fg">Brooklyn, NY</p>
           </li>
         </ul>
       </div>

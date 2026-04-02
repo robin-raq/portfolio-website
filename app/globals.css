@@ -1,85 +1,128 @@
 @import "tailwindcss";
 
-/* Retro Windows / Word 97–era palette — readable “paper” + gray chrome */
+/* LegacyLens-style terminal / CRT — green phosphor on near-black */
 :root {
-  --win-desktop: #008080;
-  --win-gray: #c0c0c0;
-  --win-gray-dark: #808080;
-  --win-titlebar: #000080;
-  --win-paper: #fffff0;
-  --win-text: #1a1a1a;
-  --win-link: #0000cc;
+  --term-bg: #050806;
+  --term-surface: #0a120e;
+  --term-surface-inset: #070b09;
+  --term-border: rgba(34, 197, 94, 0.35);
+  --term-border-faint: rgba(22, 101, 52, 0.45);
+  --term-fg: #4ade80;
+  --term-bright: #86efac;
+  --term-body: rgb(74 222 128 / 0.92);
+  --term-dim: #15803d;
+  --term-muted: #166534;
+  --term-accent: #fbbf24;
+  --term-link-hover: #bbf7d0;
+  --term-focus: #4ade80;
+  --term-glow-rgb: 74, 222, 128;
 }
 
 @theme inline {
-  --font-sans: var(--font-sans), Tahoma, "Segoe UI", sans-serif;
-  --font-serif: var(--font-doc), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-mono), ui-monospace, monospace;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
 }
 
 body {
-  background: var(--win-desktop);
-  color: var(--win-text);
+  background: var(--term-bg);
+  color: var(--term-fg);
 }
 
-/* Classic raised / sunken bevels (Win95) */
-.win95-outset {
-  border-width: 2px;
-  border-style: solid;
-  border-color: #ffffff #404040 #404040 #ffffff;
+/* Subtle CRT scanlines — keeps text readable */
+.crt-scanlines::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0.12) 1px,
+    transparent 1px,
+    transparent 3px
+  );
 }
 
-.win95-inset {
-  border-width: 2px;
-  border-style: solid;
-  border-color: #404040 #ffffff #ffffff #404040;
+/* Phosphor glow on headings / focus */
+.term-glow {
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.35);
 }
 
-.win-titlebar {
-  background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
-  color: #ffffff;
-  font-family: Tahoma, "Segoe UI", sans-serif;
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 0.02em;
-  padding: 4px 8px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.win-toolbar {
-  background: var(--win-gray);
-  border-bottom: 2px solid;
-  border-color: #404040 #ffffff #ffffff #404040;
-  padding: 6px 8px;
-}
-
-.doc-paper {
-  background: var(--win-paper);
-  color: var(--win-text);
+.term-panel {
+  border: 1px solid var(--term-border);
+  background: rgba(10, 18, 14, 0.92);
   box-shadow:
-    inset 1px 1px 0 #ffffff,
-    inset -1px -1px 0 #404040;
-  border: 2px solid;
-  border-color: #404040 #ffffff #ffffff #404040;
+    0 0 0 1px rgba(22, 101, 52, 0.3),
+    inset 0 0 40px rgba(0, 0, 0, 0.4);
 }
 
-.win-btn {
-  background: var(--win-gray);
-  border-width: 2px;
-  border-style: solid;
-  border-color: #ffffff #404040 #404040 #ffffff;
-  padding: 4px 12px;
-  font-size: 12px;
-  font-family: Tahoma, "Segoe UI", sans-serif;
-  color: #000000;
+.term-titlebar {
+  border-bottom: 1px solid var(--term-border);
+  background: linear-gradient(
+    180deg,
+    rgba(22, 101, 52, 0.25) 0%,
+    transparent 100%
+  );
+  color: var(--term-bright);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-.win-btn:hover {
-  background: #d4d0c8;
+.term-btn {
+  border: 1px solid var(--term-border);
+  background: rgba(5, 8, 6, 0.9);
+  color: var(--term-fg);
+  font-size: 11px;
+  padding: 4px 10px;
+  letter-spacing: 0.06em;
 }
 
-.win-btn-active {
-  border-color: #404040 #ffffff #ffffff #404040;
-  background: #a0a0a0;
+.term-btn:hover {
+  color: var(--term-bright);
+  border-color: rgba(74, 222, 128, 0.55);
+  box-shadow: 0 0 12px rgba(74, 222, 128, 0.12);
+}
+
+.term-btn-active {
+  color: var(--term-bright);
+  background: rgba(22, 101, 52, 0.35);
+  border-color: rgba(134, 239, 172, 0.5);
+  box-shadow: 0 0 16px rgba(74, 222, 128, 0.2);
+}
+
+.term-rule {
+  color: var(--term-dim);
+  letter-spacing: 0.1em;
+  user-select: none;
+}
+
+/* Semantic helpers — pair with Tailwind for layout */
+.text-term-fg {
+  color: var(--term-fg);
+}
+.text-term-bright {
+  color: var(--term-bright);
+}
+.text-term-body {
+  color: var(--term-body);
+}
+.text-term-dim {
+  color: var(--term-dim);
+}
+.text-term-muted {
+  color: var(--term-muted);
+}
+.bg-term-bg {
+  background-color: var(--term-bg);
+}
+.bg-term-surface {
+  background-color: var(--term-surface);
+}
+.bg-term-inset {
+  background-color: var(--term-surface-inset);
+}
+.border-term {
+  border-color: var(--term-border-faint);
 }
