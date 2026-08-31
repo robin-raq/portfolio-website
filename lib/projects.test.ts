@@ -7,14 +7,13 @@ describe("workProjects", () => {
     const titles = fellowship.map((p) => p.title);
     expect(titles).toEqual(
       expect.arrayContaining([
-        "ShipShape",
         "LegacyLens",
         "AgentForge",
         "CollabBoard",
         "ChatBridge",
       ]),
     );
-    expect(fellowship.length).toBeGreaterThanOrEqual(5);
+    expect(fellowship.length).toBeGreaterThanOrEqual(4);
   });
 
   it("marks every project with a non-empty id and summary", () => {

@@ -4,33 +4,6 @@ const tierOrder: ProjectTier[] = ["flagship", "fellowship", "professional", "por
 
 export const workProjects: WorkProject[] = [
   {
-    id: "shipshape",
-    title: "ShipShape",
-    tier: "fellowship",
-    groupLabel: "GauntletAI | AI Engineering Fellow",
-    summary:
-      "Performance and accessibility audit of a U.S. Treasury open-source project management tool.",
-    description:
-      "Audited and improved a TypeScript monorepo: k6 API load testing, PostgreSQL query tuning, Vite bundle analysis, WebSocket stress testing, and WCAG 2.1 AA accessibility remediation across a React frontend.",
-    whatItShows:
-      "performance auditing, query optimization, bundle analysis, load testing, accessibility remediation, senior engineering judgment",
-    stack: [
-      "TypeScript",
-      "React",
-      "Vite",
-      "Tailwind CSS",
-      "Express.js",
-      "Node.js",
-      "PostgreSQL",
-      "WebSockets",
-      "Yjs",
-      "Docker",
-      "Playwright",
-    ],
-    liveUrl: "https://ship-app-production-fd9d.up.railway.app/dashboard",
-    repoUrl: "https://github.com/robin-raq/shapeShip",
-  },
-  {
     id: "legacylens",
     title: "LegacyLens",
     tier: "fellowship",
